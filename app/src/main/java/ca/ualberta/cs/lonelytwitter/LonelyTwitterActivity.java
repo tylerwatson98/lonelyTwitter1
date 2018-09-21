@@ -37,11 +37,20 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				setResult(RESULT_OK);
+				// extract the text
 				String text = bodyText.getText().toString();
-				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
+				// save the text.
+				normal normalTweet = new normal();
 
+				Date date= new Date();
+				Date date2=new Date();
+
+
+				Mood1 mood1 = new Mood1("sad",date);
+				Mood2 mood2 = new Mood2("angry",date2);
+
+				saveInFile(text, new Date(System.currentTimeMillis()));
+				//finish();
 			}
 		});
 	}
