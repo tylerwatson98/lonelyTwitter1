@@ -4,8 +4,19 @@ import java.util.Date;
 
 public class Mood2 extends CurrentMood {
 
+
     public Mood2 (String mood, Date date){
         super(mood,date);
+    }
+
+    @Override
+    public Date getDate() {
+        return super.getDate();
+    }
+
+    @Override
+    public void setDate(Date date) {
+        super.setDate(date);
     }
 
     @Override

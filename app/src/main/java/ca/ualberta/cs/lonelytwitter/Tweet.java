@@ -1,16 +1,35 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import java.util.Collection;
 import java.util.Date;
 
 public abstract class Tweet {
     protected String message;
     protected Date date;
+    private static final Integer MAX_CHARS = 140;
+
+    Collection<CurrentMood> currentMoods;
+
+    Tweet(){
+        this.date=new Date();
+        this.message="I am a default message scrawl";
+
+    }
+
+
+    Tweet(String message){
+        this.date= new Date();
+        this.message=message;
+
+    }
 
     public void setMessage(String message) throws MaxTextLength {
-        if (this.message.length()>140){
+        if (message.length()<=this.MAX_CHARS){
+            this.message=message;
+        }
+        else {
             throw new MaxTextLength();
         }
-        this.message=message;
     }
 
     public void setDate(Date date){

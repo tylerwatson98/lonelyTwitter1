@@ -6,12 +6,17 @@ public abstract class CurrentMood {
     protected String mood;
     protected Date date;
 
-    public CurrentMood(String mood, Date date){
+    CurrentMood(){
+        this.date=new Date();
+        this.mood="default mood";
+    }
+
+    CurrentMood(String mood, Date date){
         this.mood=mood;
         this.date=date;
     }
 
-    public void setMode(String mode){
+    public void setMood(String mood){
             this.mood=mood;
         }
 

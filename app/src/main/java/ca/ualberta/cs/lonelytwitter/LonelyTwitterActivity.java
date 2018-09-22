@@ -30,27 +30,24 @@ public class LonelyTwitterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		bodyText = (EditText) findViewById(R.id.body);
-		Button saveButton = (Button) findViewById(R.id.save);
-		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
+		bodyText = findViewById(R.id.body);
+		Button saveButton = findViewById(R.id.save);
+		oldTweetsList = findViewById(R.id.oldTweetsList);
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				// extract the text
-				String text = bodyText.getText().toString();
-				// save the text.
-				normal normalTweet = new normal();
 
 				Date date= new Date();
 				Date date2=new Date();
-
-
 				Mood1 mood1 = new Mood1("sad",date);
 				Mood2 mood2 = new Mood2("angry",date2);
 
+				setResult(RESULT_OK);
+				// Extract the text
+				String text = bodyText.getText().toString();
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				//finish();
+				finish();
 			}
 		});
 	}
@@ -88,9 +85,13 @@ public class LonelyTwitterActivity extends Activity {
 	
 	private void saveInFile(String text, Date date) {
 		try {
+			normal myTweet = new normal();
+			myTweet.setMessage("no");
+
+
 			FileOutputStream fos = openFileOutput(FILENAME,
 					Context.MODE_APPEND);
-			fos.write(new String(date.toString() + " | " + text)
+			fos.write((date.toString() + " | " + text)
 					.getBytes());
 			fos.close();
 		} catch (FileNotFoundException e) {
@@ -99,6 +100,8 @@ public class LonelyTwitterActivity extends Activity {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (MaxTextLength maxTextLength) {
+			maxTextLength.printStackTrace();
 		}
 	}
 }
