@@ -32,6 +32,10 @@ public abstract class Tweet {
         }
     }
 
+    public String toString(){
+        return this.date.toString()+" | "+this.message;
+    }
+
     public void setDate(Date date){
         this.date=date;
     }

@@ -1,6 +1,6 @@
 package ca.ualberta.cs.lonelytwitter;
 
-public class normal extends Tweet{
+public class NormalTweet extends Tweet{
 
     @Override
     public Boolean isImportant(){
