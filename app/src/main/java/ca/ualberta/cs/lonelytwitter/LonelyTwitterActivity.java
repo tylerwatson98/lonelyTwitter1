@@ -88,7 +88,7 @@ public class LonelyTwitterActivity extends Activity {
 			InputStreamReader isr = new InputStreamReader(fis);
 			BufferedReader reader = new BufferedReader(isr);
 			Gson gson = new Gson();
-			Type listTweetType = new TypeToken<ArrayList<Tweet>>(){}.getType();
+			Type listTweetType = new TypeToken<ArrayList<ImportantTweet>>(){}.getType();
 			gson.fromJson(reader,listTweetType);
 
 		} catch (FileNotFoundException e) {
