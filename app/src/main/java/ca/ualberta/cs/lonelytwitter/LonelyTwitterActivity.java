@@ -44,6 +44,7 @@ public class LonelyTwitterActivity extends Activity {
 		setContentView(R.layout.main);
 		bodyText = findViewById(R.id.body);
 		Button saveButton = findViewById(R.id.save);
+		Button clearButton = findViewById(R.id.clear);
 		oldTweetsList = findViewById(R.id.oldTweetsList);
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -69,11 +70,23 @@ public class LonelyTwitterActivity extends Activity {
 				}
 			}
 		});
+
+
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+
+				tweets.clear();
+				adapter.notifyDataSetChanged();
+				saveInFile();
+			}
+		});
 	}
 
+
 	// when you override a method the first thing you should write is super."method"
+
 	@Override
-	protected void onStart() {
+	protected void onStart(){
 		// TODO Auto-generated method stub
 		super.onStart();
 		loadFromFile();
