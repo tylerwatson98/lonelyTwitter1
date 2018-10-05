@@ -3,8 +3,14 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.Date;
 
 public abstract class CurrentMood {
-    protected String mood;
-    protected Date date;
+    /**
+     * * Constructs Mood objects
+     *
+     * @param mood message
+     * @param date tweet date
+     */
+    private String mood;
+    private Date date;
 
     CurrentMood(){
         this.date=new Date();

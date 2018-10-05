@@ -5,6 +5,13 @@ import java.util.Date;
 public class Mood2 extends CurrentMood {
 
 
+    /**
+     * * Constructs Tweet objects
+     *
+     * @param mood string
+     * @param date date
+     */
+
     public Mood2 (String mood, Date date){
         super(mood,date);
     }
