@@ -32,7 +32,8 @@
         android:layout_height="wrap_content"
         android:scrollbars="horizontal"
         android:inputType="text"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/clear"

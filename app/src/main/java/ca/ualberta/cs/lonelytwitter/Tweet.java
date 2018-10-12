@@ -29,10 +29,10 @@ public abstract class Tweet implements Tweetable {
     public abstract Boolean isImportant();
 
 
-    public void setMessage(String message) throws TweetTooLongException {
+    public void setMessage(String message) throws MaxTextLength {
         if (message.length() > 140){
             //Do Something!
-            throw new TweetTooLongException();
+            throw new MaxTextLength();
         }
         this.message = message;
     }
@@ -49,7 +49,7 @@ public abstract class Tweet implements Tweetable {
         return date;
     }
 
-    public void setTweetID(String tweetID){
+    void setTweetID(String tweetID){
         this.tweetID=tweetID;
     }
 }
