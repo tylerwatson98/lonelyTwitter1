@@ -50,12 +50,14 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				// getting the text
+				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
+				Tweet newTweet= new ImportantTweet();
+				tweets.add(newTweet);
+				adapter.notifyDataSetChanged();
+				new ElasticSearchTweetController.AddTweetTask().execute(newTweet);
 
-				// creating an instance of the class
-				ImportantTweet newTweet = new ImportantTweet();
-
+/*
 				// set message of the new tweet
 				try {
 					newTweet.setMessage(text);
@@ -77,7 +79,7 @@ public class LonelyTwitterActivity extends Activity {
 
 				tweets.clear();
 				adapter.notifyDataSetChanged();
-				saveInFile();
+				saveInFile();*/
 			}
 		});
 	}
