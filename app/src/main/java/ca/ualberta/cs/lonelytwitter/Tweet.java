@@ -1,59 +1,40 @@
-
-// Represents a Tweet
-
-
-
-/*
- * Copyright (c) Team X, CMPUT301, University of Alberta - All Rights Reserved. You may use, distribute, or modify this
- * code under terms and conditions of the Code of Students Behavior at University of Alberta
- */
-
 package ca.ualberta.cs.lonelytwitter;
 
-import java.util.Collection;
 import java.util.Date;
 
+import io.searchbox.annotations.JestId;
 
-public abstract class Tweet {
-    protected String message;
-    protected Date date;
+public abstract class Tweet implements Tweetable {
+    private String message;
+    private Date date;
 
-    /**
-     * * Constructs Tweet objects
-     *
-     * @param message tweet message
-     * @param date tweet date
-     */
+    @JestId
+    private String tweetID;
 
-    private static final Integer MAX_CHARS = 140;
-
-    Collection<CurrentMood> currentMoods;
-
-
-
-    Tweet() {
-        this.date = new Date();
-        this.message = "I am a default message scrawl";
-
-    }
-
-
-    Tweet(String message) {
-        this.date = new Date();
+    public Tweet(String message){
         this.message = message;
-
+        this.date = new Date();
     }
 
-    public void setMessage(String message) throws MaxTextLength {
-        if (message.length() <= this.MAX_CHARS) {
-            this.message = message;
-        } else {
-            throw new MaxTextLength();
+    public Tweet(String message, Date date){
+        this.message = message;
+        this.date = date;
+    }
+
+    @Override
+    public String toString(){
+        return message;
+    }
+
+    public abstract Boolean isImportant();
+
+
+    public void setMessage(String message) throws TweetTooLongException {
+        if (message.length() > 140){
+            //Do Something!
+            throw new TweetTooLongException();
         }
-    }
-
-    public String toString() {
-        return this.date.toString() + " | " + this.message;
+        this.message = message;
     }
 
     public void setDate(Date date) {
@@ -61,12 +42,14 @@ public abstract class Tweet {
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
     }
 
     public Date getDate() {
-        return this.date;
+        return date;
     }
 
-    public abstract Boolean isImportant();
+    public void setTweetID(String tweetID){
+        this.tweetID=tweetID;
+    }
 }
